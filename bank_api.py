@@ -66,6 +66,7 @@ def on_req_undo_transaction():
     resp.data = transaction.to_json()
     return resp
 
-@app.route("/", methods=['GET'])
-def test_page():
-    return send_file('test.html')
+if USE_MOCK:
+    @app.route("/", methods=['GET'])
+    def test_page():
+        return send_file('test.html')
